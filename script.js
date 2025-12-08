@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 const finishBtn = document.querySelector('.finish');
 const ruseltPage = document.querySelector('.pageFinal');
 
@@ -48,24 +46,19 @@ let currentQuestionIndex = 0;
 let score = 5;
 let choices = Array.from(document.getElementsByClassName("choice"));
 const quiz = document.querySelector('.quiz');
+const replay = document.querySelector(".replay");
+const home = document.querySelector('.home')
+const start = document.querySelector('.start')
 
-
-
-
-    finishBtn.addEventListener('click', function(){
-      ruseltPage.classList.remove('hidden');
-      quiz.classList.add('hidden')
-      
-    })
-  
+//hide quiz page and showing ruselt Page
+finishBtn.addEventListener('click', function () {
+  ruseltPage.classList.remove('hidden');
+  quiz.classList.add('hidden')
+})
 
 
 function showQuestion() {
   const qst = questions[currentQuestionIndex];
-  document.querySelector('#element').textContent = qst.question;
-
-  const answerBtn = document.querySelector('.choix');
-
   document.querySelector('#element').textContent = qst.question;
   const container = document.querySelector('.quiz .choix');
   console.log("container", container)
@@ -82,6 +75,21 @@ function showQuestion() {
   });
 }
 
+function restartQuiz(){
+  score = 0;
+  currentQuestionIndex = 0;
+  document.querySelector('#scoreQuiz').textContent = '0';
+
+  finishBtn.classList.add('hidden');
+  ruseltPage.classList.add('hidden');
+  quiz.classList.remove('hidden');
+
+  showQuestion();
+}
+
+replay.addEventListener('click', ()=>{
+  restartQuiz();
+});
 
 function checkAnswers(index, btn) {
   if (currentQuestionIndex >= questions.length) return;
@@ -89,7 +97,7 @@ function checkAnswers(index, btn) {
 
   if (qst.answer[index].correct) {
     btn.style.backgroundColor = '#97f173ff';
-    document.querySelector('#scoreQuiz').textContent = score+5;
+    document.querySelector('#scoreQuiz').textContent = score + 5;
   } else {
     btn.style.backgroundColor = '#ff6b6b'
   }
