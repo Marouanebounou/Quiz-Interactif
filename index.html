@@ -9,7 +9,7 @@
     <body>
 
         <div class="container">
-            <section id="accueil" class="Home">
+            <section id="accueil" class="home">
                 <div class="page">
                     <img src="./images/quiz.png" class="logo">
                     <h1>Quiz Interactif</h1>
@@ -24,10 +24,15 @@
                 </div>
             </section>
             
-            <section class="Quiz">
+            <section class="quiz">
                 <div class="page">
                         <img src="./images/quiz.png" class="logo">
                         <h1>Quiz Interactif</h1>
+                        <div class="para">
+                            <p>Question NR 1 :</p>
+                            <p>Score : 0/0</p>
+                        </div>
+                        <p id = element>Lequel des éléments suivants n'est pas un concept POO en Java?</p>
                         <p>Question NR 1 :</p>
                         <p class="score">Score : 0/0</p>
                         <p class="question" id="question"></p>
@@ -42,6 +47,17 @@
                 </div>
             </section>
             <section class="Resultat">
+            </section>
+            <section class="pageFinal">
+                <div class="score">
+                    <img src="./images/quiz.png">
+                    <h1>Quiz Interactif</h1>
+                    <h2 id="finQuiz">Quiz Termine !</h2>
+                    <h2 id="scoreQuiz">3/10</h2>
+                    <h2 id="pourcentage"> <span></span>Score: 30%</h2>
+                    <button class="replay"><img src="./images/replay.png" alt="">Recommencer</button>
+                    <button class="quittez"><img src="./images/quitter.png" alt="">QUITTER</button>
+                </div>
             </section>
         </div>
         <script src="script.js"></script>
