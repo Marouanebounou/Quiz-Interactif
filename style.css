@@ -1,3 +1,66 @@
 *{
-    
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
 }
+#acceuil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#3d4f5d;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    height: 100vh;
+}
+.container {
+    width: 350px;
+    padding: 20px;
+    background: #FEF7EE;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.page img{
+    width: 10%;
+    margin: 10px;
+    margin-bottom: 0;
+}
+.page h1 {
+    color:#b4590f;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px;
+    margin-top: 0;
+}
+.page p{
+    align-self: self-start;
+    margin: 10px;
+}
+
+.choix{
+    display: flex;
+    flex-direction: column;
+}
+.choix button {
+    width: 300px;
+    margin: 5px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    background-color: #b4590f;
+    color: white;
+    font-size: 1.2rem;
+}
+
