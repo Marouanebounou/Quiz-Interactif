@@ -1,60 +1,138 @@
 *{
-    box-sizing: border-box;
     margin: 0;
+    box-sizing: border-box;
     padding: 0;
 }
-
-body{
-    background-color: #283B52;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+#acceuil{
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 40px;
-    max-height: 100vh;
+    align-items: center;
 }
-
-.card{
-    background-color: #FEF7EE;
-    max-height: 95vh;
-    max-width: 700px;
-    padding: 80px;
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#3d4f5d;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    height: 100vh;
+}
+.container {
+    width: 350px;
+    padding: 20px;
+    background: #FEF7EE;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+   
+}
+.page{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-self: center;
-    text-align: center;
-    border-radius: 69px;
+    align-items: center;
 }
-
-.card .icon{
-    width: 114px;
-    height: 114px;
-    align-self:center;
+.page img{
+    width: 10%;
+    margin: 10px;
+    margin-bottom: 0;
 }
-
-h1{
-    color: #CA8430;
-    font-size: 64px;
+.page h1 {
+    color:#CA8430;
+    font-weight: bold;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px;
+    margin-top: 0;
+}
+.page p{
+    align-self: self-start;
+    margin: 10px;
 }
 
-.categorie-title{
-    color: black;
-    font-size: 32px;
-    font-weight: 500;
-
+.choix{
+    display: flex;
+    flex-direction: column;
 }
-
-.btn{
-    height: 89px;
-    width: 500px;
-    color: white;
-    font-size: 30px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin: 7px;
-    background-color: #AF5D36;
+.choix button {
+    width: 300px;
+    margin: 5px;
+    height: 40px;
+    border-radius: 25px;
     border: none;
-    border-radius: 26px;
-    cursor: pointer;
+    background-color: #AF5D36;
+    color: white;
+    font-size: 1.2rem;
+}
+.home {
+
+    visibility: hidden;
+}
+
+.quiz{
+    
+    visibility: block;
+}
+
+.quiz button {
+     width: 300px;
+    margin: 5px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    background-color: #283B52;
+    color: white;
+    font-size: 1.2rem;
+}
+.para {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#element{
+    color:#AF5D36 ;
+    text-align: start;
+}
+.pageFinal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pageFinal img{
+    width: 10%;
+    margin: 10px;
+    margin-bottom: 0;
+}
+.pageFinal h1 {
+    color:#CA8430;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px;
+    margin-top: 0;
+}
+.replay{
+     margin: 10px;
+    width: 40%;
+    background-color:#283B52;
+    color: white;
+}
+.quittez{
+    margin: 10px;
+    width: 40%;
+    background-color: #283B52;
+    color: white;
+}
+.hidden{
+    display: none;
+}
+
+#finishBtn{
+    background: rebeccapurple;
+    margin-top: 65px;
+}
+
+#finishBtn :hover{
+    background: rgb(52, 26, 78);
 }
