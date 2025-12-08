@@ -1,6 +1,10 @@
 'use strict';
 
 
+
+const finishBtn = document.querySelector('.finish');
+const ruseltPage = document.querySelector('.pageFinal');
+
 const questions = [
   {
     question: 'Which of the following is used to declare a variable in JavaScript?',
@@ -41,10 +45,70 @@ const questions = [
 ];
 
 let currentQuestionIndex = 0;
-let score =0;
-let availableQuestion = [...questions];
-  document.getElementById('question').textContent ='hdhfdhdfhb'
+let score = 5;
+let choices = Array.from(document.getElementsByClassName("choice"));
+const quiz = document.querySelector('.quiz');
 
- 
 
- 
+
+
+    finishBtn.addEventListener('click', function(){
+      ruseltPage.classList.remove('hidden');
+      quiz.classList.add('hidden')
+      
+    })
+  
+
+
+function showQuestion() {
+  const qst = questions[currentQuestionIndex];
+  document.querySelector('#element').textContent = qst.question;
+
+  const answerBtn = document.querySelector('.choix');
+
+  document.querySelector('#element').textContent = qst.question;
+  const container = document.querySelector('.quiz .choix');
+  console.log("container", container)
+  const choices = Array.from(container.getElementsByClassName('choice'));
+
+
+  //btn choice 1 index=0
+  choices.forEach((btn, index) => {
+    btn.style.backgroundColor = "";
+    btn.textContent = qst.answer[index].text;
+    btn.addEventListener("click", function () {
+      checkAnswers(index, btn)
+    })
+  });
+}
+
+
+function checkAnswers(index, btn) {
+  if (currentQuestionIndex >= questions.length) return;
+  const qst = questions[currentQuestionIndex];
+
+  if (qst.answer[index].correct) {
+    btn.style.backgroundColor = '#97f173ff';
+    document.querySelector('#scoreQuiz').textContent = score+5;
+  } else {
+    btn.style.backgroundColor = '#ff6b6b'
+  }
+  setTimeout(() => {
+    nextQuestion();
+  }, 600);
+}
+
+function nextQuestion() {
+  currentQuestionIndex++
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    finishBtn.classList.remove('hidden');
+    // ruseltPage.classList.remove('hidden');
+  }
+}
+
+
+
+showQuestion();
+

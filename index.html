@@ -9,7 +9,7 @@
     <body>
 
         <div class="container">
-            <section id="accueil" class="home">
+            <section id="accueil" class="home hidden">
                 <div class="page">
                     <img src="./images/quiz.png" class="logo">
                     <h1>Quiz Interactif</h1>
@@ -30,7 +30,6 @@
                         <h1>Quiz Interactif</h1>
                         <div class="para">
                             <p>Question NR 1 :</p>
-                            <p>Score : 0/0</p>
                         </div>
                         <p id = element>Lequel des éléments suivants n'est pas un concept POO en Java?</p>
                         <p>Question NR 1 :</p>
@@ -38,17 +37,17 @@
                         <p class="question" id="question"></p>
     
                     <div class="choix">
-                        <button class="option">Héritage</button>
-                        <button class="option">Encapsulation</button>
-                        <button class="option">Polymorphisme</button>
-                        <button class="option">Compilation</button>
-
+                        <button class="choice">Héritage</button>
+                        <button class="choice">Encapsulation</button>
+                        <button class="choice">Polymorphisme</button>
+                        <button class="choice">Compilation</button>
                     </div>
+                    <button id="finishBtn" class="finish hidden"  >finish</button>
                 </div>
             </section>
             <section class="Resultat">
             </section>
-            <section class="pageFinal">
+            <section class="pageFinal hidden">
                 <div class="score">
                     <img src="./images/quiz.png">
                     <h1>Quiz Interactif</h1>
