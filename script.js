@@ -1,7 +1,7 @@
 "use strict";
 
-const finishBtn = document.querySelector(".finish");
-const ruseltPage = document.querySelector(".pageFinal");
+const finishBtn = document.querySelector('.finish');
+const ruseltPage = document.querySelector('.pageFinal');
 
 const questions = [
   {
@@ -103,7 +103,16 @@ let score = 0;
 let totalQyes = document.querySelector("#total-score");
 totalQyes.textContent = questions.length;
 let choices = Array.from(document.getElementsByClassName("choice"));
-const quiz = document.querySelector(".quiz");
+const quiz = document.querySelector('.quiz');
+const replay = document.querySelector(".replay");
+const home = document.querySelector('.home')
+const start = document.querySelector('.start')
+
+//hide quiz page and showing ruselt Page
+finishBtn.addEventListener('click', function () {
+  ruseltPage.classList.remove('hidden');
+  quiz.classList.add('hidden')
+})
 
 finishBtn.addEventListener("click", function () {
   ruseltPage.classList.remove("hidden");
@@ -112,10 +121,10 @@ finishBtn.addEventListener("click", function () {
 
 function showQuestion() {
   const qst = questions[currentQuestionIndex];
-  document.querySelector("#element").textContent = qst.question;
-
-  const container = document.querySelector(".quiz .choix");
-  const choices = Array.from(container.getElementsByClassName("choice"));
+  document.querySelector('#element').textContent = qst.question;
+  const container = document.querySelector('.quiz .choix');
+  console.log("container", container)
+  const choices = Array.from(container.getElementsByClassName('choice'));
 
   choices.forEach((btn, index) => {
     btn.style.backgroundColor = "";
@@ -128,6 +137,21 @@ function showQuestion() {
   });
 }
 
+function restartQuiz(){
+  score = 0;
+  currentQuestionIndex = 0;
+  document.querySelector('#scoreQuiz').textContent = '0';
+
+  finishBtn.classList.add('hidden');
+  ruseltPage.classList.add('hidden');
+  quiz.classList.remove('hidden');
+
+  showQuestion();
+}
+
+replay.addEventListener('click', ()=>{
+  restartQuiz();
+});
 function checkAnswers(index, btn, choices) {
   const qst = questions[currentQuestionIndex];
 
