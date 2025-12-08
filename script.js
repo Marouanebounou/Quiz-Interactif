@@ -1,12 +1,22 @@
 "use strict";
 
-const finishBtn = document.querySelector('.finish');
-const ruseltPage = document.querySelector('.pageFinal');
+const quiz = document.querySelector(".quiz");
+const finishBtn = document.querySelector(".finish");
+const resultPage = document.querySelector(".pageFinal");
+const replayBtn = document.querySelector(".replay");
+
+const questionText = document.querySelector("#element");
+const choices = Array.from(document.querySelectorAll(".choice"));
+
+const scoreText = document.querySelector(".correct-score");
+const totalScoreText = document.querySelector("#total-score");
+const finalScoreText = document.querySelector(".final-score");
+const finalTotalScoreText = document.querySelector("#final-total-score");
+const percentageText = document.querySelector("#pourcentage");
 
 const questions = [
   {
-    question:
-      "Which of the following is used to declare a variable in JavaScript?",
+    question: "Which of the following is used to declare a variable in JavaScript?",
     answer: [
       { text: "var", correct: true },
       { text: "vbl", correct: false },
@@ -24,8 +34,7 @@ const questions = [
     ],
   },
   {
-    question:
-      "Which method is used to convert a JSON string to a JavaScript object?",
+    question: "Which method converts JSON string to object?",
     answer: [
       { text: "JSON.parse()", correct: true },
       { text: "JSON.stringify()", correct: false },
@@ -34,7 +43,7 @@ const questions = [
     ],
   },
   {
-    question: "Which of the following is NOT a JavaScript data type?",
+    question: "Which is NOT a JavaScript data type?",
     answer: [
       { text: "Number", correct: false },
       { text: "String", correct: false },
@@ -43,7 +52,7 @@ const questions = [
     ],
   },
   {
-    question: "How do you write a single-line comment in JavaScript?",
+    question: "How do you write a single-line comment?",
     answer: [
       { text: "// comment", correct: true },
       { text: "<!-- comment -->", correct: false },
@@ -52,7 +61,7 @@ const questions = [
     ],
   },
   {
-    question: "Which keyword is used to create a constant in JavaScript?",
+    question: "Which keyword creates a constant?",
     answer: [
       { text: "const", correct: true },
       { text: "constant", correct: false },
@@ -61,7 +70,7 @@ const questions = [
     ],
   },
   {
-    question: "Which function is used to print something to the console?",
+    question: "Which function prints to console?",
     answer: [
       { text: "console.log()", correct: true },
       { text: "print()", correct: false },
@@ -70,7 +79,7 @@ const questions = [
     ],
   },
   {
-    question: "What is the result of `typeof null`?",
+    question: "Result of typeof null?",
     answer: [
       { text: '"object"', correct: true },
       { text: '"null"', correct: false },
@@ -79,7 +88,7 @@ const questions = [
     ],
   },
   {
-    question: "Which array method removes the last element?",
+    question: "Which array method removes last element?",
     answer: [
       { text: "pop()", correct: true },
       { text: "push()", correct: false },
@@ -88,7 +97,7 @@ const questions = [
     ],
   },
   {
-    question: "Which loop is guaranteed to run at least once?",
+    question: "Which loop runs at least once?",
     answer: [
       { text: "do...while", correct: true },
       { text: "for", correct: false },
@@ -100,69 +109,32 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let score = 0;
-let totalQyes = document.querySelector("#total-score");
-totalQyes.textContent = questions.length;
-let choices = Array.from(document.getElementsByClassName("choice"));
-const quiz = document.querySelector('.quiz');
-const replay = document.querySelector(".replay");
-const home = document.querySelector('.home')
-const start = document.querySelector('.start')
 
-//hide quiz page and showing ruselt Page
-finishBtn.addEventListener('click', function () {
-  ruseltPage.classList.remove('hidden');
-  quiz.classList.add('hidden')
-})
-
-finishBtn.addEventListener("click", function () {
-  ruseltPage.classList.remove("hidden");
-  quiz.classList.add("hidden");
-});
+totalScoreText.textContent = questions.length;
+finalTotalScoreText.textContent = questions.length;
 
 function showQuestion() {
   const qst = questions[currentQuestionIndex];
-  document.querySelector('#element').textContent = qst.question;
-  const container = document.querySelector('.quiz .choix');
-  console.log("container", container)
-  const choices = Array.from(container.getElementsByClassName('choice'));
+  questionText.textContent = qst.question;
 
   choices.forEach((btn, index) => {
-    btn.style.backgroundColor = "";
     btn.disabled = false;
+    btn.style.backgroundColor = "";
     btn.textContent = qst.answer[index].text;
 
-    btn.onclick = () => {
-      checkAnswers(index, btn, choices);
-    };
+    btn.onclick = () => checkAnswer(index, btn);
   });
 }
 
-function restartQuiz(){
-  score = 0;
-  currentQuestionIndex = 0;
-  document.querySelector('#scoreQuiz').textContent = '0';
+function checkAnswer(index, btn) {
+  choices.forEach(b => b.disabled = true);
 
-  finishBtn.classList.add('hidden');
-  ruseltPage.classList.add('hidden');
-  quiz.classList.remove('hidden');
-
-  showQuestion();
-}
-
-replay.addEventListener('click', ()=>{
-  restartQuiz();
-});
-function checkAnswers(index, btn, choices) {
-  const qst = questions[currentQuestionIndex];
-
-  choices.forEach((b) => (b.disabled = true));
-
-  if (qst.answer[index].correct) {
-    btn.style.backgroundColor = "#97f173ff";
+  if (questions[currentQuestionIndex].answer[index].correct) {
+    btn.style.backgroundColor = "lightgreen";
     score++;
-    document.querySelector(".correct-score").textContent = score;
+    scoreText.textContent = score;
   } else {
-    btn.style.backgroundColor = "#ff6b6b";
+    btn.style.backgroundColor = "salmon";
   }
 
   setTimeout(nextQuestion, 600);
@@ -174,15 +146,28 @@ function nextQuestion() {
   if (currentQuestionIndex < questions.length) {
     showQuestion();
   } else {
-    let correct = document.querySelector(".final-score")
-    console.log(correct);
-    correct.textContent = score
-    let perc = document.querySelector("#pourcentage")
-    perc.textContent = score * 10 + "%"
-    finishBtn.classList.remove("hidden");
-    quiz.classList.add("hidden");
-    ruseltPage.classList.remove("hidden");
+    finishQuiz();
   }
 }
+
+function finishQuiz() {
+  quiz.classList.add("hidden");
+  resultPage.classList.remove("hidden");
+
+  finalScoreText.textContent = score;
+  percentageText.textContent =
+    "Score: " + Math.round((score / questions.length) * 100) + "%";
+}
+
+replayBtn.addEventListener("click", () => {
+  score = 0;
+  currentQuestionIndex = 0;
+  scoreText.textContent = "0";
+
+  resultPage.classList.add("hidden");
+  quiz.classList.remove("hidden");
+
+  showQuestion();
+});
 
 showQuestion();
