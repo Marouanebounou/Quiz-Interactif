@@ -143,3 +143,12 @@ body{
 #finishBtn :hover{
     background: rgb(52, 26, 78);
 }
+
+.replay{
+    margin: 15px;
+    padding: 0px;
+    height: 35px;
+    width: 107px;
+    border-radius: 15px;
+    font-size: 14px;
+}
