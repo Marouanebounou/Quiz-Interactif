@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-    <title>Quiz Interactif</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Interactif</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <body>
-        <div class="container">
-            <section id="accueil" class="Home">
-                <div class="page">
-                    <img src="./images/quiz.png" class="logo">
-                    <h1>Quiz Interactif</h1>
-                    <p>Choisissez une categorie:</p>
-                    
-                    <div class="choix">
-                        <button class="choix1">Java</button>
-                        <button class="choix2">JavaScript</button>
-                        <button class="choix3">CSS</button>
-                        <button class="choix4">HTML</button>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="Quiz">
-                <div class="page">
-                        <img src="./images/quiz.png" class="logo">
-                        <h1>Quiz Interactif</h1>
-                        <p>Question NR 1 :</p>
-                        <p>Score : 0/0</p>
-                        <p>Lequel des éléments suivants n’est pas un concept POO en Java?</p>
-    
-                    <div class="choix">
-                        <button class="choix1">Héritage</button>
-                        <button class="choix2">Encapsulation</button>
-                        <button class="choix3">Polymorphisme</button>
-                        <button class="choix4">Compilation</button>
+<body>
+  <div class="container">
 
-                    </div>
-                </div>
-            </section>
-            <section class="Resultat">
-            </section>
-            <section class="pageFinal">
-                <div class="score">
-                    <img src="./images/quiz.png">
-                    <h1>Quiz Interactif</h1>
-                    <h1 id="finQuiz">Quiz Termine !</h1>
-                    <h1 id="scoreQuiz">3/10</h1>
-                    <h1 id="pourcentage">Score: 30%</h1>
-                    <button class="replay"><img src="./images/replay.png" alt="">Recommencer</button>
-                    <button class="quittez"><img src="./images/quitter.png" alt="">QUITTER</button>
-                </div>
-            </section>
+    <!-- QUIZ PAGE -->
+    <section class="quiz">
+      <div class="page">
+        <h1>Quiz Interactif</h1>
+
+        <p id="element"></p>
+
+        <div class="score-div">
+          <p>Score:</p>
+          <p class="correct-score">0</p>
+          <p>of</p>
+          <p id="total-score">0</p>
         </div>
-    </body>
+
+        <div class="choix">
+          <button class="choice"></button>
+          <button class="choice"></button>
+          <button class="choice"></button>
+          <button class="choice"></button>
+        </div>
+
+        <button class="finish hidden">Finish</button>
+      </div>
+    </section>
+
+    <!-- RESULT PAGE -->
+    <section class="pageFinal hidden">
+      <div class="page">
+        <h1>Quiz Terminé</h1>
+
+        <div class="score-div">
+          <p>Score:</p>
+          <p class="final-score">0</p>
+          <p>of</p>
+          <p id="final-total-score">10</p>
+        </div>
+
+        <h2 id="pourcentage">Score: 0%</h2>
+
+        <button class="replay">Recommencer</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
